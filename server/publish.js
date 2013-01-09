@@ -8,3 +8,7 @@ Meteor.publish('books', function() {
 Meteor.publish('notes', function(book_id) {
   return Notes.find({book_id: book_id});
 });
+
+Accounts.validateNewUser(function (user) {
+  throw new Meteor.Error(403, "Signup not allowed.");
+});

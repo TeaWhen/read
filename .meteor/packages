@@ -6,6 +6,5 @@
 insecure
 preserve-inputs
 accounts-ui
-accounts-github
 accounts-password
 jquery
