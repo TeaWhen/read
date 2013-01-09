@@ -1,0 +1,39 @@
+<template name="header">
+  <header>
+    <h1>Read<small> - {{loginButtons}}</small></h1>
+    {{> headerContent}}
+    {{> search}}
+  </header>
+</template>
+
+<template name="headerContent">
+  {{#if currentUser}}
+  {{> random}}
+  {{> overview}}
+  {{else}}
+  <p>Manage your progress, notes and comments <br /> ｢爲讀者提供進度管理, 筆記, 評論的站點｣</p>
+  {{/if}}
+</template>
+
+<template name="search">
+  <input type="text" name="content" class="search_content" placeholder="檢索書籍" />
+</template>
+
+<template name="overview">
+  <ul>
+    <li><a href="#">擱置: {{on_hold}}<strong>｢在讀: {{do}}｣</strong></a></li>
+    <li><a href="#">拋棄: {{dropped}}<strong>想讀: {{wish}}</strong></a></li>
+    <li><a href="#">總計: {{total}}<strong>讀過: {{collect}}</strong></a></li>
+  </ul>
+</template>
+
+<template name="random">
+  <p class="view">
+    <a href="#">
+      ｢中文呢?｣
+      <br />
+      <br />
+      <small>我写给她九封长信，七封装进信封，五封寄了出去。我不曾得到回音。(主頁隨機自己的某個筆記或評論 書籍頁面隨機當前書的筆記)</small>
+    </a>
+  </p>
+</template>

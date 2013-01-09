@@ -1,0 +1,45 @@
+<template name="section">
+  <section>
+    {{> showBooks}}
+    {{> results}}
+    {{> notes}}
+  </section>
+</template>
+
+<template name="showBooks">
+  {{#each books}}
+    <div class="book_list">
+      <h2>｢{{title}}｣<small>{{subtitle}}</small></h2>
+      <p>{{author}}{{#if translator}} | {{translator}}{{/if}}</p>
+    </div>
+  {{/each}}
+</template>
+
+<template name="results">
+  {{#each books}}
+    <div class="result_book">
+      <img class="book_img" src="{{images.small}}" alt="{{title}}" />
+      <h2>｢{{title}}｣<small>{{subtitle}}</small></h2>
+      <p>{{author}}{{#if translator}} | {{translator}}{{/if}}
+      <button class="collect" srid={{_id}}>讀過</button>
+      <button class="do" srid={{_id}}>在讀</button>
+      <button class="wish" srid={{_id}}>想讀</button>
+      <button class="on_hold" srid={{_id}}>擱置</button>
+      <button class="dropped" srid={{_id}}>拋棄</button>
+      </p>
+    </div>
+  {{/each}}
+</template>
+
+<template name="notes">
+  {{#if showNotes}}
+    <hr />
+    {{#if allNotes}}
+      {{#each allNotes}}
+        <p>content</p>
+      {{/each}}
+    {{else}}
+      <p>還沒有筆記.</p>
+    {{/if}}
+  {{/if}}
+</template>
