@@ -1,34 +1,34 @@
 <template name="section">
   <section>
     {{> showBooks}}
-    {{> results}}
     {{> notes}}
   </section>
 </template>
 
 <template name="showBooks">
   {{#each books}}
-    <div class="book_list">
-      <h2>｢{{title}}｣<small>{{subtitle}}</small></h2>
-      <p>{{author}}{{#if translator}} | {{translator}}{{/if}}</p>
+    <div class="item">
+      <div class="pic">
+        <img class="book_img" src="{{images.small}}" alt="{{title}}" />
+      </div>
+      <div class="info">
+        <h2>｢{{title}}｣<small>{{subtitle}}</small></h2>
+        <p>{{author}}{{#if translator}} | {{translator}}{{/if}}</p>
+        {{> control}}
+      </div>
     </div>
   {{/each}}
+  {{#if more_url}}
+    <a href="#" class="load_more">Load more...</a>
+  {{/if}}
 </template>
 
-<template name="results">
-  {{#each books}}
-    <div class="result_book">
-      <img class="book_img" src="{{images.small}}" alt="{{title}}" />
-      <h2>｢{{title}}｣<small>{{subtitle}}</small></h2>
-      <p>{{author}}{{#if translator}} | {{translator}}{{/if}}
-      <button class="collect" srid={{_id}}>讀過</button>
-      <button class="do" srid={{_id}}>在讀</button>
-      <button class="wish" srid={{_id}}>想讀</button>
-      <button class="on_hold" srid={{_id}}>擱置</button>
-      <button class="dropped" srid={{_id}}>拋棄</button>
-      </p>
-    </div>
-  {{/each}}
+<template name="control">
+  <button to_status="collect" item_id={{_id}}>讀過</button>
+  <button to_status="do" item_id={{_id}}>在讀</button>
+  <button to_status="wish" item_id={{_id}}>想讀</button>
+  <button to_status="on_hold" item_id={{_id}}>擱置</button>
+  <button to_status="dropped" item_id={{_id}}>拋棄</button>
 </template>
 
 <template name="notes">

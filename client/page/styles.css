@@ -293,3 +293,29 @@ footer {
 .search_content {
   width: 100%;
 }
+
+/* Book Item */
+
+.item {
+  width: 590px;
+  height: 111px;
+  border-bottom: 1px dashed #DDD;
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+}
+
+.item .pic {
+  width: 80px;
+  height: 92px;
+  float: left;
+}
+
+.item .info {
+  width: 510px;
+  height: 111px;
+  float: right;
+}
+
+.item .info small {
+  color: #777;
+}

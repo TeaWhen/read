@@ -21,19 +21,23 @@
 
 <template name="overview">
   <ul>
-    <li><a href="#">擱置: {{on_hold}}<strong>｢在讀: {{do}}｣</strong></a></li>
-    <li><a href="#">拋棄: {{dropped}}<strong>想讀: {{wish}}</strong></a></li>
-    <li><a href="#">總計: {{total}}<strong>讀過: {{collect}}</strong></a></li>
+    <li><a href="#" class="do">擱置: {{on_hold}}<strong>｢在讀: {{do}}｣</strong></a></li>
+    <li><a href="#" class="wish">拋棄: {{dropped}}<strong>想讀: {{wish}}</strong></a></li>
+    <li><a href="#" class="collect">總計: {{total}}<strong>讀過: {{collect}}</strong></a></li>
   </ul>
 </template>
 
 <template name="random">
   <p class="view">
+  {{#if randomNote}}
     <a href="#">
       ｢中文呢?｣
       <br />
       <br />
       <small>我写给她九封长信，七封装进信封，五封寄了出去。我不曾得到回音。(主頁隨機自己的某個筆記或評論 書籍頁面隨機當前書的筆記)</small>
     </a>
+  {{else}}
+    還沒有筆記喲~
+  {{/if}}
   </p>
 </template>
