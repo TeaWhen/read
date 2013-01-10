@@ -302,6 +302,7 @@ footer {
   border-bottom: 1px dashed #DDD;
   padding-bottom: 5px;
   margin-bottom: 20px;
+  line-height: 19px;
 }
 
 .item .pic {

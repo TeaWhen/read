@@ -47,12 +47,15 @@ var debug;
 Template.overview.events({
   'click a.do': function(event) {
     debug = event;
+    Session.set('page_style', 'list');
     Session.set('book_status', 'do');
   },
   'click a.wish': function(event) {
+    Session.set('page_style', 'list');
     Session.set('book_status', 'wish');
   },
   'click a.collect': function(event) {
+    Session.set('page_style', 'list');
     Session.set('book_status', 'collect');
   }
 });
@@ -62,7 +65,7 @@ Template.overview.events({
 Template.showBooks.books = function() {
   if (Session.get('page_style') === 'list') {
     if (Session.get('book_status')) {
-      return Books.find({'status': Session.get('book_status')});
+      return Books.find({'status': Session.get('book_status')}, {'sort': [['timestamp_added', 'desc']]});
     }
     return Books.find({});
   }
@@ -121,6 +124,8 @@ Template.control.events({
     var book = SearchResults.findOne({'_id': String(event.target.attributes.item_id.value)});
     var status = String(event.target.attributes.to_status.value);
     book.status = status;
+    book.timestamp_added = Number(new Date());
+    book.timestamp_modified = Number(new Date());
     delete book._id;
     var id = Books.insert(book);
   }
